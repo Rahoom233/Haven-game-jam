@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://b70vocourpw7l"]
+
+[ext_resource type="Script" uid="uid://cijfv742r1ux2" path="res://scenes/levels/level.gd" id="1_fbemd"]
+[ext_resource type="PackedScene" uid="uid://boyfpeahpj754" path="res://scenes/canon.tscn" id="2_fbemd"]
+[ext_resource type="PackedScene" uid="uid://bj447y1bekwhx" path="res://scenes/alien_spawner.tscn" id="3_pn6ll"]
+[ext_resource type="Texture2D" uid="uid://cy21xu6itdont" path="res://asset/background/plainsbg.png" id="4_pn6ll"]
+[ext_resource type="FontFile" uid="uid://duvwdl8guhxy8" path="res://asset/BBH_Bogle/LEMONMILK-MediumItalic.otf" id="5_oii7c"]
+[ext_resource type="AudioStream" uid="uid://fymknecfuxin" path="res://asset/sound/BeatA.mp3" id="6_2md8r"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6cpc1"]
+
+[node name="Level 1" type="Node2D" unique_id=1393629337]
+script = ExtResource("1_fbemd")
+alien_sizes = Array[int]([2, 3, 4])
+alien_ammount = Array[int]([1, 2, 1])
+
+[node name="background" type="Sprite2D" parent="." unique_id=296561712]
+z_index = -3
+position = Vector2(160, 90)
+texture = ExtResource("4_pn6ll")
+
+[node name="canon" parent="." unique_id=642948365 instance=ExtResource("2_fbemd")]
+position = Vector2(11, 154)
+speed = 100
+tilt_speed = 2.0
+
+[node name="alien spawners" type="Node" parent="." unique_id=1840326582]
+
+[node name="alien spawner" parent="alien spawners" unique_id=1713699110 instance=ExtResource("3_pn6ll")]
+position = Vector2(0, -70)
+
+[node name="alien spawner2" parent="alien spawners" unique_id=773205185 instance=ExtResource("3_pn6ll")]
+position = Vector2(70, -70)
+
+[node name="alien spawner3" parent="alien spawners" unique_id=969666409 instance=ExtResource("3_pn6ll")]
+position = Vector2(183, -70)
+
+[node name="alien spawner4" parent="alien spawners" unique_id=434679548 instance=ExtResource("3_pn6ll")]
+position = Vector2(265, -70)
+
+[node name="floor" type="StaticBody2D" parent="." unique_id=1632194051]
+position = Vector2(7, 170)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor" unique_id=1071254699]
+shape = SubResource("WorldBoundaryShape2D_6cpc1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="floor" unique_id=873270818]
+position = Vector2(-32, -1)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_6cpc1")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="floor" unique_id=1135131404]
+position = Vector2(321, 1)
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_6cpc1")
+
+[node name="Timer" type="Timer" parent="." unique_id=151080515]
+one_shot = true
+autostart = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=934316080]
+visible = false
+position = Vector2(152, 97)
+enabled = false
+zoom = Vector2(0.4, 0.4)
+
+[node name="Label" type="Label" parent="." unique_id=775148800]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("5_oii7c")
+text = "SCORE: "
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=660976717]
+stream = ExtResource("6_2md8r")
+autoplay = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

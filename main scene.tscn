@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://cfmprp16h847x"]
+
+[ext_resource type="Script" uid="uid://boye37wduqnd6" path="res://scenes/main_scene.gd" id="1_ce2h5"]
+[ext_resource type="Texture2D" uid="uid://cjh32tfwhvil8" path="res://asset/background/Title.png" id="2_k0ot2"]
+[ext_resource type="AudioStream" uid="uid://doq2v4i5hlvo4" path="res://asset/sound/BeatB.mp3" id="3_k0ot2"]
+
+[node name="MainScene" type="Control" unique_id=36387230]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ce2h5")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1805934764]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_k0ot2")
+
+[node name="play button" type="Button" parent="." unique_id=679640763]
+layout_mode = 0
+offset_left = 243.0
+offset_top = 102.0
+offset_right = 282.0
+offset_bottom = 130.0
+flat = true
+
+[node name="credits" type="Button" parent="." unique_id=609711534]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 27.0
+offset_right = 80.0
+offset_bottom = 42.0
+flat = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1933197924]
+stream = ExtResource("3_k0ot2")
+autoplay = true
+
+[connection signal="pressed" from="play button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="credits" to="." method="_on_credits_pressed"]

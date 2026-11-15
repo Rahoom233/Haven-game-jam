@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://b70vocourpw7l"]
+
+[ext_resource type="PackedScene" uid="uid://boyfpeahpj754" path="res://scenes/canon.tscn" id="1_2q6dc"]
+[ext_resource type="Script" uid="uid://cijfv742r1ux2" path="res://scenes/level.gd" id="1_w7c3h"]
+[ext_resource type="PackedScene" uid="uid://chnfqgp31qo4u" path="res://scenes/alien_ball.tscn" id="4_mx8sn"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6cpc1"]
+
+[node name="Level" type="Node2D" unique_id=1393629337]
+script = ExtResource("1_w7c3h")
+
+[node name="canon" parent="." unique_id=642948365 instance=ExtResource("1_2q6dc")]
+position = Vector2(11, 164)
+speed = 3
+tilt_speed = 2.0
+
+[node name="floor" type="StaticBody2D" parent="." unique_id=1632194051]
+position = Vector2(7, 181)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor" unique_id=1071254699]
+shape = SubResource("WorldBoundaryShape2D_6cpc1")
+
+[node name="alien ball very big" parent="." unique_id=1440604759 instance=ExtResource("4_mx8sn")]
+position = Vector2(36, -3)
+scale = Vector2(2, 2)
+
+[node name="alien ball big" parent="." unique_id=1064492963 instance=ExtResource("4_mx8sn")]
+position = Vector2(97, 7)
+scale = Vector2(1.5, 1.5)
+
+[node name="alien ball medium" parent="." unique_id=297400619 instance=ExtResource("4_mx8sn")]
+position = Vector2(158, 7)
+
+[node name="alien ball small" parent="." unique_id=901281227 instance=ExtResource("4_mx8sn")]
+position = Vector2(226, 4)
+scale = Vector2(0.7, 0.7)
+
+[node name="alien ball baby" parent="." unique_id=1080608632 instance=ExtResource("4_mx8sn")]
+position = Vector2(278, 2)
+scale = Vector2(0.3, 0.3)

@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://cdm7eq8vh048h"]
+
+[ext_resource type="Script" uid="uid://bb7bxka1atate" path="res://scenes/final_scene.gd" id="1_hv6rm"]
+[ext_resource type="AudioStream" uid="uid://fymknecfuxin" path="res://asset/sound/BeatA.mp3" id="2_5gr46"]
+[ext_resource type="AudioStream" uid="uid://b3cl5t10go6ei" path="res://asset/sound/lose.mp3" id="3_4f38k"]
+
+[node name="FinalScene" type="Control" unique_id=1758409722]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hv6rm")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2081441078]
+layout_mode = 0
+offset_right = 322.0
+offset_bottom = 180.0
+color = Color(0, 0, 0, 1)
+
+[node name="score" type="Label" parent="." unique_id=474163348]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -5.0
+offset_right = 3.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "SCORE: "
+
+[node name="high score" type="Label" parent="." unique_id=174510955]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = 41.0
+offset_right = 72.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+text = "HIGH SCORE: "
+
+[node name="Game over" type="Label" parent="." unique_id=2064924214]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 10.0
+offset_right = 225.0
+offset_bottom = 45.0
+theme_override_colors/font_color = Color(0.8, 0.728, 0.7964, 1)
+theme_override_colors/font_outline_color = Color(0.7309968, 0.19979998, 0.74, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 25
+text = "GAME OVER"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2078205198]
+stream = ExtResource("2_5gr46")
+autoplay = true
+
+[node name="loss" type="AudioStreamPlayer" parent="." unique_id=1892978644]
+stream = ExtResource("3_4f38k")
+volume_db = 6.0
+autoplay = true
+
+[node name="Button" type="Button" parent="." unique_id=2108437310]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "MENU"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

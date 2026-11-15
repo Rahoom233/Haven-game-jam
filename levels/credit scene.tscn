@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://e055dlr3fo36"]
+
+[ext_resource type="Script" uid="uid://bvqusne43awip" path="res://scenes/levels/credit_scene.gd" id="1_xcrrb"]
+
+[node name="CreditScene" type="Control" unique_id=2003134061]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xcrrb")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1751132599]
+layout_mode = 0
+offset_right = 322.0
+offset_bottom = 180.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=250551461]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 25.0
+offset_right = 307.0
+offset_bottom = 152.0
+text = "Lead Programmer: Rahoom Sardar
+
+Lead Art and Media: Jaswant Pardhan
+
+Creative Artist and Supporter: Noor M"
+
+[node name="Button" type="Button" parent="." unique_id=2037851986]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "menu"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

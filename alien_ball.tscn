@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://chnfqgp31qo4u"]
+
+[ext_resource type="Script" uid="uid://d3k3fqgwiypmc" path="res://scenes/alien_ball.gd" id="1_l6e5f"]
+[ext_resource type="Texture2D" uid="uid://cufno1vcwj2k0" path="res://asset/circles/1.png" id="2_qwdj7"]
+[ext_resource type="FontFile" uid="uid://ceuwkx8lcinr6" path="res://asset/BBH_Bogle/BBHBogle-Regular.ttf" id="3_qwdj7"]
+[ext_resource type="AudioStream" uid="uid://fr76c68qdyef" path="res://asset/sound/hit/hit.MP3" id="4_pqxpx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6cpc1"]
+radius = 16.03122
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nahmq"]
+radius = 16.03122
+
+[node name="alien ball charecter" type="CharacterBody2D" unique_id=1440604759]
+script = ExtResource("1_l6e5f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=907966527]
+shape = SubResource("CircleShape2D_6cpc1")
+
+[node name="base" type="Sprite2D" parent="." unique_id=1472132810]
+texture = ExtResource("2_qwdj7")
+
+[node name="eyes" type="Sprite2D" parent="." unique_id=1876731365]
+
+[node name="movement changer" type="Timer" parent="." unique_id=1556022100]
+one_shot = true
+autostart = true
+
+[node name="health" type="Label" parent="." unique_id=1855655987]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.0
+offset_top = 2.0
+offset_right = 6.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_qwdj7")
+theme_override_font_sizes/font_size = 10
+text = "565"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1806271264]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1156069051]
+shape = SubResource("CircleShape2D_nahmq")
+debug_color = Color(0.6309254, 0.52971214, 0, 0.41960785)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1635339352]
+stream = ExtResource("4_pqxpx")
+autoplay = true
+
+[connection signal="timeout" from="movement changer" to="." method="_on_movement_changer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
